@@ -16,7 +16,8 @@ import {
   CheckCircle2,
   Clock,
   MessageSquare,
-  Settings
+  Settings,
+  Shield
 } from "lucide-react";
 
 const StudentDashboard = () => {
@@ -175,40 +176,143 @@ const StudentDashboard = () => {
               </div>
             </Card>
 
-            {/* Blockchain Verified Credentials */}
-            <Card className="p-6 border-2 border-verified/30 bg-verified/5">
+            {/* Ministry of Education Verified Credentials */}
+            <Card className="p-6 border-2 border-primary/50 bg-gradient-to-br from-primary/5 to-background">
               <h2 className="text-2xl font-semibold mb-6 flex items-center gap-2">
-                <Award className="h-6 w-6 text-verified" />
-                My Credentials
+                <Shield className="h-6 w-6 text-primary" />
+                Ministry of Education Verified Credentials
               </h2>
+              <p className="text-sm text-muted-foreground mb-6">
+                All your official academic records and national examination results verified and secured by the Ministry of Education.
+              </p>
 
-              <div className="p-5 rounded-lg bg-background border-2 border-verified/20 mb-4">
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">High School Diploma</h3>
-                    <p className="text-sm text-muted-foreground">Expected: June 2025</p>
+              <div className="space-y-4">
+                {/* National Exam - Grade 12 */}
+                <div className="p-5 rounded-lg bg-background border-2 border-primary/30 hover:border-primary/50 transition-all">
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-2">
+                        <h3 className="font-semibold text-lg">Grade 12 National Examination</h3>
+                        <Badge className="bg-success text-success-foreground flex items-center gap-1">
+                          <CheckCircle2 className="h-3 w-3" />
+                          MoE Verified
+                        </Badge>
+                      </div>
+                      <p className="text-sm text-muted-foreground">Ethiopian General Education Certificate (EGEC)</p>
+                      <p className="text-xs text-muted-foreground mt-1">Examination Date: June 2023</p>
+                    </div>
                   </div>
-                  <div className="verified-badge">
-                    <CheckCircle2 className="h-4 w-4" />
-                    DLT-Secured
+                  <div className="grid grid-cols-2 gap-3 mt-4 p-3 bg-muted/30 rounded">
+                    <div>
+                      <p className="text-xs text-muted-foreground">Overall Score</p>
+                      <p className="text-lg font-bold text-success">87.5%</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground">National Ranking</p>
+                      <p className="text-lg font-bold text-primary">Top 5%</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 mt-3 p-2 bg-primary/5 rounded border border-primary/20">
+                    <Shield className="h-4 w-4 text-primary flex-shrink-0" />
+                    <span className="text-xs font-mono">Blockchain ID: MOE-EGEC-2023-12345</span>
+                  </div>
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    className="w-full mt-3"
+                    onClick={handleDownloadCertificate}
+                  >
+                    <Download className="mr-2 h-4 w-4" />
+                    Download Official Certificate
+                  </Button>
+                </div>
+
+                {/* University Degree */}
+                <div className="p-5 rounded-lg bg-background border-2 border-primary/30 hover:border-primary/50 transition-all">
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-2">
+                        <h3 className="font-semibold text-lg">Bachelor of Science in Engineering</h3>
+                        <Badge className="bg-success text-success-foreground flex items-center gap-1">
+                          <CheckCircle2 className="h-3 w-3" />
+                          MoE Verified
+                        </Badge>
+                      </div>
+                      <p className="text-sm text-muted-foreground">Addis Ababa University</p>
+                      <p className="text-xs text-muted-foreground mt-1">Graduation Date: July 2024</p>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-3 mt-4 p-3 bg-muted/30 rounded">
+                    <div>
+                      <p className="text-xs text-muted-foreground">CGPA</p>
+                      <p className="text-lg font-bold text-success">3.85/4.00</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground">Academic Honor</p>
+                      <p className="text-sm font-bold text-primary">Magna Cum Laude</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 mt-3 p-2 bg-primary/5 rounded border border-primary/20">
+                    <Shield className="h-4 w-4 text-primary flex-shrink-0" />
+                    <span className="text-xs font-mono">Blockchain ID: MOE-AAU-BSC-2024-47829</span>
+                  </div>
+                  <div className="flex gap-2 mt-3">
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      className="flex-1"
+                      onClick={handleDownloadCertificate}
+                    >
+                      <Download className="mr-2 h-4 w-4" />
+                      Download Transcript
+                    </Button>
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      className="flex-1"
+                      onClick={handleSharePortfolio}
+                      disabled={!isFeatureAvailable("Blockchain credential verification", currentPackage)}
+                    >
+                      <Share2 className="mr-2 h-4 w-4" />
+                      Share Portfolio
+                    </Button>
                   </div>
                 </div>
-                
-                <div className="flex gap-3">
+
+                {/* National Exam - Grade 10 */}
+                <div className="p-5 rounded-lg bg-background border-2 border-primary/30 hover:border-primary/50 transition-all">
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-2">
+                        <h3 className="font-semibold text-lg">Grade 10 National Examination</h3>
+                        <Badge className="bg-success text-success-foreground flex items-center gap-1">
+                          <CheckCircle2 className="h-3 w-3" />
+                          MoE Verified
+                        </Badge>
+                      </div>
+                      <p className="text-sm text-muted-foreground">General Education Certificate</p>
+                      <p className="text-xs text-muted-foreground mt-1">Examination Date: June 2021</p>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-3 mt-4 p-3 bg-muted/30 rounded">
+                    <div>
+                      <p className="text-xs text-muted-foreground">Overall Score</p>
+                      <p className="text-lg font-bold text-success">85.0%</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground">Status</p>
+                      <p className="text-lg font-bold text-success">Passed</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 mt-3 p-2 bg-primary/5 rounded border border-primary/20">
+                    <Shield className="h-4 w-4 text-primary flex-shrink-0" />
+                    <span className="text-xs font-mono">Blockchain ID: MOE-GEC-2021-67890</span>
+                  </div>
                   <Button 
                     variant="outline" 
                     size="sm"
-                    onClick={handleSharePortfolio}
-                    disabled={!isFeatureAvailable("Blockchain credential verification", currentPackage)}
-                  >
-                    <Share2 className="mr-2 h-4 w-4" />
-                    Generate Shareable Portfolio
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    size="sm"
+                    className="w-full mt-3"
                     onClick={handleDownloadCertificate}
-                    disabled={!isFeatureAvailable("Blockchain credential verification", currentPackage)}
                   >
                     <Download className="mr-2 h-4 w-4" />
                     Download Certificate
@@ -216,10 +320,12 @@ const StudentDashboard = () => {
                 </div>
               </div>
 
-              <p className="text-sm text-muted-foreground">
-                Your academic credentials are cryptographically secured on the EduChain DLT, 
-                making them instantly verifiable by universities and employers worldwide.
-              </p>
+              <div className="mt-6 p-4 bg-muted/30 rounded-lg border border-primary/20">
+                <p className="text-sm text-muted-foreground">
+                  <strong className="text-foreground">🔒 Blockchain Security:</strong> All credentials are cryptographically secured on EduChain DLT 
+                  and can be instantly verified by employers, universities, and institutions worldwide through the Fayda e-School verification portal.
+                </p>
+              </div>
             </Card>
           </div>
 

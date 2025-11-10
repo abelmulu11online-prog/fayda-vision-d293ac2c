@@ -14,7 +14,9 @@ import {
   BookOpen,
   ClipboardCheck,
   Award,
-  Smartphone
+  Smartphone,
+  ChevronRight,
+  School
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -478,133 +480,126 @@ const Home = () => {
 
           {/* Package Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <Card className="relative overflow-hidden hover-scale hover:shadow-2xl transition-all duration-300 group">
+            {/* Base Package */}
+            <Card className="relative overflow-hidden hover-scale hover:shadow-2xl transition-all duration-300 group border-2 hover:border-primary/50">
               <div className="p-8">
-                <div className="mb-6">
-                  <h3 className="text-2xl font-bold mb-2">Base Package</h3>
-                  <p className="text-muted-foreground">Essential features for schools starting their digital transformation journey</p>
+                <div className="flex items-center justify-between mb-6">
+                  <School className="h-12 w-12 text-primary group-hover:scale-110 transition-transform" />
+                  <Badge variant="secondary" className="text-sm">Essential</Badge>
                 </div>
                 <div className="mb-6">
-                  <Badge variant="secondary" className="text-lg px-4 py-2">Starter Plan</Badge>
+                  <h3 className="text-3xl font-bold mb-2">Base Package</h3>
+                  <p className="text-muted-foreground">Core administrative functions, essential communication, and mandatory financial inclusion tools for efficient school management.</p>
                 </div>
-                <div className="space-y-3 mb-8">
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">School & classroom management</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Digital journal & timetable</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Point-based & verbal assessments</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Homework tracking</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Messaging application</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Mobile app access</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Telebirr/M-Pesa fee payment</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Basic EMIS integration</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">48-hour customer support</span>
-                  </div>
+                
+                <div className="mb-8 p-4 bg-muted/30 rounded-lg">
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-success flex-shrink-0" />
+                      <span>School & classroom management</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-success flex-shrink-0" />
+                      <span>Digital fee payment (Telebirr/M-Pesa)</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-success flex-shrink-0" />
+                      <span>Basic EMIS integration</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-success flex-shrink-0" />
+                      <span>48-hour customer support</span>
+                    </li>
+                  </ul>
                 </div>
-                <Link to="/login">
-                  <Button className="w-full group-hover:scale-105 transition-transform" size="lg">
-                    Get Started
+
+                <div className="space-y-3">
+                  <Link to="/login">
+                    <Button className="w-full group-hover:scale-105 transition-transform" size="lg" variant="outline">
+                      Get Started
+                    </Button>
+                  </Link>
+                  <Button 
+                    className="w-full" 
+                    variant="ghost"
+                    onClick={() => document.getElementById('feature-comparison')?.scrollIntoView({ behavior: 'smooth' })}
+                  >
+                    See All Features
+                    <ChevronRight className="ml-2 h-4 w-4" />
                   </Button>
-                </Link>
+                </div>
               </div>
-              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16"></div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 group-hover:bg-primary/10 transition-colors"></div>
             </Card>
 
-            <Card className="relative overflow-hidden border-2 border-primary hover-scale hover:shadow-2xl transition-all duration-300 group">
-              <div className="absolute top-4 right-4">
-                <Badge className="bg-primary text-primary-foreground">Most Popular</Badge>
+            {/* National Package */}
+            <Card className="relative overflow-hidden border-2 border-primary hover-scale hover:shadow-2xl transition-all duration-300 group bg-gradient-to-br from-primary/5 to-background">
+              <div className="absolute top-4 right-4 z-10">
+                <Badge className="bg-primary text-primary-foreground shadow-lg">Most Popular</Badge>
               </div>
               <div className="p-8">
-                <div className="mb-6">
-                  <h3 className="text-2xl font-bold mb-2">National Package</h3>
-                  <p className="text-muted-foreground">Complete solution with advanced anti-fraud and intervention tools</p>
+                <div className="flex items-center justify-between mb-6">
+                  <Award className="h-12 w-12 text-primary group-hover:scale-110 transition-transform" />
+                  <Badge className="text-sm">Advanced</Badge>
                 </div>
                 <div className="mb-6">
-                  <Badge variant="default" className="text-lg px-4 py-2">Premium Plan</Badge>
+                  <h3 className="text-3xl font-bold mb-2">National Package</h3>
+                  <p className="text-muted-foreground">All Base features plus blockchain verification, Alarm Bell early intervention system, and advanced tools for maximum educational impact.</p>
                 </div>
-                <div className="space-y-3 mb-8">
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span className="text-sm font-semibold">All Base Package features</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Blockchain credential verification</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Alarm Bell early intervention system</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Development interviews & cards</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Learning outcomes portfolio</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Student curriculum choices</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">School event registration</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Full system integrations (Untis, RIKS, ELIIS)</span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">Priority 24-hour support</span>
-                  </div>
+                
+                <div className="mb-8 p-4 bg-primary/10 rounded-lg border border-primary/20">
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-success flex-shrink-0" />
+                      <span className="font-semibold">All Base Package features</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-success flex-shrink-0" />
+                      <span>Blockchain credential verification</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-success flex-shrink-0" />
+                      <span>Alarm Bell early intervention system</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle2 className="h-4 w-4 text-success flex-shrink-0" />
+                      <span>Priority 24-hour support</span>
+                    </li>
+                  </ul>
                 </div>
-                <Link to="/login">
-                  <Button className="w-full group-hover:scale-105 transition-transform" size="lg" variant="default">
-                    Get Started
+
+                <div className="space-y-3">
+                  <Link to="/login">
+                    <Button className="w-full group-hover:scale-105 transition-transform shadow-lg" size="lg">
+                      Get Started
+                    </Button>
+                  </Link>
+                  <Button 
+                    className="w-full" 
+                    variant="ghost"
+                    onClick={() => document.getElementById('feature-comparison')?.scrollIntoView({ behavior: 'smooth' })}
+                  >
+                    See All Features
+                    <ChevronRight className="ml-2 h-4 w-4" />
                   </Button>
-                </Link>
+                </div>
               </div>
-              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full -mr-16 -mt-16"></div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full -mr-16 -mt-16 group-hover:bg-primary/20 transition-colors"></div>
             </Card>
           </div>
 
           {/* Detailed Comparison Table */}
-
-          <div className="overflow-x-auto bg-background rounded-lg shadow-lg">
-            <table className="w-full border-collapse">
-              <thead>
-                <tr className="border-b-2 border-border">
-                  <th className="text-left p-4 font-semibold">Feature Details</th>
-                  <th className="text-center p-4 font-semibold bg-muted/30">Base Package</th>
-                  <th className="text-center p-4 font-semibold bg-primary/10">National Package</th>
-                </tr>
-              </thead>
+          <div id="feature-comparison" className="scroll-mt-20">
+            <h3 className="text-2xl font-bold text-center mb-8">Complete Feature Comparison</h3>
+            <div className="overflow-x-auto bg-background rounded-lg shadow-lg">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr className="border-b-2 border-border">
+                    <th className="text-left p-4 font-semibold">Feature Details</th>
+                    <th className="text-center p-4 font-semibold bg-muted/30">Base Package</th>
+                    <th className="text-center p-4 font-semibold bg-primary/10">National Package</th>
+                  </tr>
+                </thead>
               <tbody>
                 {comparisonFeatures.map((feature, index) => (
                   <tr key={index} className="border-b hover:bg-muted/30 transition-colors duration-200">
@@ -627,6 +622,7 @@ const Home = () => {
                 ))}
               </tbody>
             </table>
+          </div>
           </div>
 
           <div className="mt-12 text-center">
