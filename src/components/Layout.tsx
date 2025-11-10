@@ -25,6 +25,11 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
             >
               Home
             </Link>
+            <a href="/#features" className="text-sm font-medium text-foreground transition-colors hover:text-primary">Features</a>
+            <a href="/#benefits" className="text-sm font-medium text-foreground transition-colors hover:text-primary">Benefits</a>
+            <a href="/#partnerships" className="text-sm font-medium text-foreground transition-colors hover:text-primary">Partnerships</a>
+            <a href="/#testimonials" className="text-sm font-medium text-foreground transition-colors hover:text-primary">Testimonials</a>
+            <a href="/#packages" className="text-sm font-medium text-foreground transition-colors hover:text-primary">Packages</a>
             <Link 
               to="/how-to" 
               className={`text-sm font-medium transition-colors hover:text-primary ${isActive("/how-to") ? "text-primary" : "text-foreground"}`}

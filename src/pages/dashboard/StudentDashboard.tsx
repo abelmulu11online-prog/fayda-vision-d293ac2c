@@ -2,6 +2,9 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { PackageFeatures, PackageType, isFeatureAvailable } from "@/components/PackageFeatures";
+import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 import { 
   GraduationCap, 
   Calendar, 
@@ -12,10 +15,36 @@ import {
   Download,
   CheckCircle2,
   Clock,
-  MessageSquare
+  MessageSquare,
+  Settings
 } from "lucide-react";
 
 const StudentDashboard = () => {
+  const { toast } = useToast();
+  const [currentPackage] = useState<PackageType>("national"); // Simulated - would come from auth/db
+  
+  const handleDownloadCertificate = () => {
+    toast({
+      title: "Download Started",
+      description: "Your verified certificate is being prepared for download.",
+    });
+    // Simulate download
+    setTimeout(() => {
+      toast({
+        title: "Download Complete",
+        description: "Certificate downloaded successfully!",
+      });
+    }, 2000);
+  };
+
+  const handleSharePortfolio = () => {
+    const portfolioUrl = window.location.origin + "/portfolio/student-12345";
+    navigator.clipboard.writeText(portfolioUrl);
+    toast({
+      title: "Link Copied!",
+      description: "Your portfolio link has been copied to clipboard.",
+    });
+  };
   return (
     <div className="min-h-screen bg-muted/30">
       {/* Header */}
@@ -33,10 +62,16 @@ const StudentDashboard = () => {
               <p className="opacity-90">Grade 12A • Addis Ababa University Preparatory School</p>
               <p className="text-sm opacity-80 mt-1">Student ID: STU-2024-12345 • Fayda ID: FID-9876543210</p>
             </div>
-            <Button variant="secondary" size="lg">
-              <MessageSquare className="mr-2 h-5 w-5" />
-              Contact Teachers
-            </Button>
+            <div className="flex gap-3">
+              <Button variant="secondary" size="lg" onClick={() => toast({ title: "Opening Messages", description: "Messaging system launching..." })}>
+                <MessageSquare className="mr-2 h-5 w-5" />
+                Contact Teachers
+              </Button>
+              <Button variant="outline" size="lg">
+                <Settings className="mr-2 h-5 w-5" />
+                Settings
+              </Button>
+            </div>
           </div>
         </div>
       </div>
@@ -160,11 +195,21 @@ const StudentDashboard = () => {
                 </div>
                 
                 <div className="flex gap-3">
-                  <Button variant="outline" size="sm">
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    onClick={handleSharePortfolio}
+                    disabled={!isFeatureAvailable("Blockchain credential verification", currentPackage)}
+                  >
                     <Share2 className="mr-2 h-4 w-4" />
                     Generate Shareable Portfolio
                   </Button>
-                  <Button variant="outline" size="sm">
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    onClick={handleDownloadCertificate}
+                    disabled={!isFeatureAvailable("Blockchain credential verification", currentPackage)}
+                  >
                     <Download className="mr-2 h-4 w-4" />
                     Download Certificate
                   </Button>
@@ -234,6 +279,11 @@ const StudentDashboard = () => {
                   <p className="text-xs text-muted-foreground">Math: Consistent performance on problem sets.</p>
                 </div>
               </div>
+            </Card>
+
+            {/* Package Features */}
+            <Card className="p-6">
+              <PackageFeatures currentPackage={currentPackage} />
             </Card>
           </div>
         </div>

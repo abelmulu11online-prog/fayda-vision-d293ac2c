@@ -3,6 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { PackageFeatures, PackageType } from "@/components/PackageFeatures";
+import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 import { 
   Users, 
   TrendingUp, 
@@ -12,10 +15,33 @@ import {
   MessageSquare,
   CheckCircle2,
   Phone,
-  CreditCard
+  CreditCard,
+  Download
 } from "lucide-react";
 
 const ParentDashboard = () => {
+  const { toast } = useToast();
+  const [currentPackage] = useState<PackageType>("national");
+  
+  const handlePayment = (method: string) => {
+    toast({
+      title: "Payment Initiated",
+      description: `Connecting to ${method} payment gateway...`,
+    });
+    setTimeout(() => {
+      toast({
+        title: "Payment Successful",
+        description: "School fees payment completed successfully!",
+      });
+    }, 2000);
+  };
+
+  const handleDownloadReceipt = () => {
+    toast({
+      title: "Downloading Receipt",
+      description: "Payment receipt is being prepared.",
+    });
+  };
   return (
     <div className="min-h-screen bg-muted/30">
       {/* Header */}
@@ -135,7 +161,11 @@ const ParentDashboard = () => {
 
                   <div className="space-y-3 mb-6">
                     <p className="font-medium text-sm mb-3">Select Payment Method:</p>
-                    <Button variant="outline" className="w-full justify-start h-auto py-4">
+                    <Button 
+                      variant="outline" 
+                      className="w-full justify-start h-auto py-4 hover-scale transition-all"
+                      onClick={() => handlePayment("Telebirr")}
+                    >
                       <div className="flex items-center gap-4">
                         <div className="h-12 w-12 rounded-lg bg-secondary/10 flex items-center justify-center">
                           <Phone className="h-6 w-6 text-secondary" />
@@ -146,7 +176,11 @@ const ParentDashboard = () => {
                         </div>
                       </div>
                     </Button>
-                    <Button variant="outline" className="w-full justify-start h-auto py-4">
+                    <Button 
+                      variant="outline" 
+                      className="w-full justify-start h-auto py-4 hover-scale transition-all"
+                      onClick={() => handlePayment("M-Pesa")}
+                    >
                       <div className="flex items-center gap-4">
                         <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
                           <CreditCard className="h-6 w-6 text-primary" />
@@ -156,6 +190,15 @@ const ParentDashboard = () => {
                           <p className="text-xs text-muted-foreground">Pay via mobile wallet</p>
                         </div>
                       </div>
+                    </Button>
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="w-full"
+                      onClick={handleDownloadReceipt}
+                    >
+                      <Download className="mr-2 h-4 w-4" />
+                      Download Previous Receipts
                     </Button>
                   </div>
 
@@ -250,15 +293,28 @@ const ParentDashboard = () => {
                 <Card className="p-6">
                   <h3 className="font-semibold mb-4">Quick Actions</h3>
                   <div className="space-y-2">
-                    <Button variant="outline" className="w-full justify-start">
+                    <Button 
+                      variant="outline" 
+                      className="w-full justify-start hover-scale transition-all"
+                      onClick={() => toast({ title: "Absence Notice", description: "Opening absence notification form..." })}
+                    >
                       <MessageSquare className="mr-2 h-4 w-4" />
                       Send Absence Notice
                     </Button>
-                    <Button variant="outline" className="w-full justify-start">
+                    <Button 
+                      variant="outline" 
+                      className="w-full justify-start hover-scale transition-all"
+                      onClick={() => toast({ title: "Schedule Conference", description: "Opening conference scheduler..." })}
+                    >
                       <Calendar className="mr-2 h-4 w-4" />
                       Schedule Conference
                     </Button>
                   </div>
+                </Card>
+
+                {/* Package Features */}
+                <Card className="p-6">
+                  <PackageFeatures currentPackage={currentPackage} />
                 </Card>
               </div>
             </div>

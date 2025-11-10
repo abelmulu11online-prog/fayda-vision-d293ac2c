@@ -132,9 +132,9 @@ const Home = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 bg-muted/30">
+      <section id="features" className="py-16 bg-muted/30">
         <div className="container">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 animate-fade-in">
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
               <span className="text-primary">Features</span> that go beyond expectations
             </h2>
@@ -145,33 +145,33 @@ const Home = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {/* Feature Cards */}
-            <Card className="p-6">
-              <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=200&fit=crop" alt="Grades and absences" className="rounded-lg mb-4 w-full h-32 object-cover" />
-              <h3 className="font-semibold mb-2">Grades & absences</h3>
+            <Card className="p-6 hover-scale hover:shadow-lg transition-all duration-300 cursor-pointer group">
+              <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=200&fit=crop" alt="Grades and absences" className="rounded-lg mb-4 w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300" />
+              <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors">Grades & absences</h3>
               <p className="text-sm text-muted-foreground">
                 Students can stay on top of their academic progress with convenient grades and absences tracker, empowering them to effortlessly monitor their performance and attendance.
               </p>
             </Card>
 
-            <Card className="p-6">
-              <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=200&fit=crop" alt="Journal overview" className="rounded-lg mb-4 w-full h-32 object-cover" />
-              <h3 className="font-semibold mb-2">Journal overview</h3>
+            <Card className="p-6 hover-scale hover:shadow-lg transition-all duration-300 cursor-pointer group">
+              <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=200&fit=crop" alt="Journal overview" className="rounded-lg mb-4 w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300" />
+              <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors">Journal overview</h3>
               <p className="text-sm text-muted-foreground">
                 Teachers can easily access class rosters, subject assignments, scheduling details, lesson plans, and student information, all in a single, user-friendly interface.
               </p>
             </Card>
 
-            <Card className="p-6">
-              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=200&fit=crop" alt="Student homework" className="rounded-lg mb-4 w-full h-32 object-cover" />
-              <h3 className="font-semibold mb-2">Student homework</h3>
+            <Card className="p-6 hover-scale hover:shadow-lg transition-all duration-300 cursor-pointer group">
+              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=200&fit=crop" alt="Student homework" className="rounded-lg mb-4 w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300" />
+              <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors">Student homework</h3>
               <p className="text-sm text-muted-foreground">
                 Students can stay organized, manage assignments, submit tasks online and efficiently track their progress on homework, ensuring academic success with ease.
               </p>
             </Card>
 
-            <Card className="p-6">
-              <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&h=200&fit=crop" alt="Student lessons" className="rounded-lg mb-4 w-full h-32 object-cover" />
-              <h3 className="font-semibold mb-2">Student lessons</h3>
+            <Card className="p-6 hover-scale hover:shadow-lg transition-all duration-300 cursor-pointer group">
+              <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400&h=200&fit=crop" alt="Student lessons" className="rounded-lg mb-4 w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300" />
+              <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors">Student lessons</h3>
               <p className="text-sm text-muted-foreground">
                 Students can have a deeper understanding of each lesson through detailed overviews, lesson plans and class materials, giving them all the necessary resources to excel in their studies.
               </p>
@@ -269,10 +269,205 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Benefits Section */}
+      <section id="benefits" className="py-16 bg-background">
+        <div className="container">
+          <div className="text-center mb-12 animate-fade-in">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+              How it benefits <span className="text-primary">everyone</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Fayda e-School transforms education for students, parents, teachers, and administrators alike.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <Card className="p-8 hover-scale hover:shadow-xl transition-all duration-300 group">
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                <BookOpen className="h-8 w-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold mb-4">For Students</h3>
+              <ul className="space-y-3 text-sm text-muted-foreground">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                  <span>Track grades, attendance, and assignments in real-time</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                  <span>Access digital learning materials anytime, anywhere</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                  <span>Build verified digital portfolios for career opportunities</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                  <span>Receive early intervention support when needed</span>
+                </li>
+              </ul>
+            </Card>
+
+            <Card className="p-8 hover-scale hover:shadow-xl transition-all duration-300 group">
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                <Users className="h-8 w-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold mb-4">For Parents</h3>
+              <ul className="space-y-3 text-sm text-muted-foreground">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                  <span>Monitor your child's academic progress in real-time</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                  <span>Pay school fees securely via mobile money (Telebirr/M-Pesa)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                  <span>Communicate directly with teachers and administrators</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                  <span>Stay informed with instant notifications and updates</span>
+                </li>
+              </ul>
+            </Card>
+
+            <Card className="p-8 hover-scale hover:shadow-xl transition-all duration-300 group">
+              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                <ClipboardCheck className="h-8 w-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold mb-4">For Schools</h3>
+              <ul className="space-y-3 text-sm text-muted-foreground">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                  <span>Reduce administrative workload by 50%</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                  <span>Eliminate academic fraud with blockchain verification</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                  <span>Seamless EMIS integration for national reporting</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                  <span>Reduce student dropout rates by up to 80%</span>
+                </li>
+              </ul>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Partnerships Section */}
+      <section id="partnerships" className="py-16 bg-muted/30">
+        <div className="container">
+          <div className="text-center mb-12 animate-fade-in">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+              Deeply <span className="text-primary">integrated</span> & highly trusted
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Fayda e-School seamlessly connects with Ethiopia's national digital infrastructure and leading educational platforms.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto mb-12">
+            <Card className="p-6 flex flex-col items-center justify-center hover-scale hover:shadow-lg transition-all duration-300 group">
+              <Shield className="h-12 w-12 text-primary mb-3 group-hover:scale-110 transition-transform" />
+              <p className="text-sm font-semibold text-center">Fayda Digital ID</p>
+            </Card>
+            <Card className="p-6 flex flex-col items-center justify-center hover-scale hover:shadow-lg transition-all duration-300 group">
+              <FileText className="h-12 w-12 text-primary mb-3 group-hover:scale-110 transition-transform" />
+              <p className="text-sm font-semibold text-center">National EMIS</p>
+            </Card>
+            <Card className="p-6 flex flex-col items-center justify-center hover-scale hover:shadow-lg transition-all duration-300 group">
+              <Smartphone className="h-12 w-12 text-primary mb-3 group-hover:scale-110 transition-transform" />
+              <p className="text-sm font-semibold text-center">Telebirr/M-Pesa</p>
+            </Card>
+            <Card className="p-6 flex flex-col items-center justify-center hover-scale hover:shadow-lg transition-all duration-300 group">
+              <TrendingUp className="h-12 w-12 text-primary mb-3 group-hover:scale-110 transition-transform" />
+              <p className="text-sm font-semibold text-center">EduChain DLT</p>
+            </Card>
+          </div>
+
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="text-muted-foreground mb-6">
+              Our platform is built on Ethiopia's Digital Public Infrastructure, ensuring secure authentication, 
+              seamless financial transactions, and blockchain-verified credentials that employers trust.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section id="testimonials" className="py-16 bg-background">
+        <div className="container">
+          <div className="text-center mb-12 animate-fade-in">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+              Trusted by <span className="text-primary">educators</span> nationwide
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              See how Fayda e-School is transforming education across Ethiopia.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <Card className="p-6 hover-scale hover:shadow-xl transition-all duration-300">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Award className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <p className="font-semibold">Dr. Abebe Tadesse</p>
+                  <p className="text-sm text-muted-foreground">Principal, Addis International School</p>
+                </div>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                "Fayda e-School reduced our administrative burden by over 50%. Teachers now spend more time teaching 
+                and less time on paperwork. The blockchain verification feature has completely eliminated credential fraud."
+              </p>
+            </Card>
+
+            <Card className="p-6 hover-scale hover:shadow-xl transition-all duration-300">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Users className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <p className="font-semibold">Tigist Hailu</p>
+                  <p className="text-sm text-muted-foreground">Parent, Mekelle</p>
+                </div>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                "I can now monitor my daughter's progress in real-time and pay school fees instantly via Telebirr. 
+                The platform keeps me connected to her education like never before. Truly revolutionary!"
+              </p>
+            </Card>
+
+            <Card className="p-6 hover-scale hover:shadow-xl transition-all duration-300">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                  <BookOpen className="h-6 w-6 text-primary" />
+                </div>
+                <div>
+                  <p className="font-semibold">Yohannes Bekele</p>
+                  <p className="text-sm text-muted-foreground">Teacher, Bahir Dar University</p>
+                </div>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                "The Alarm Bell system helps me identify at-risk students early. I've seen dropout rates decline 
+                dramatically since we started using FES. It's making a real difference in students' lives."
+              </p>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Package Comparison Section */}
-      <section className="py-16 bg-background">
+      <section id="packages" className="py-16 bg-muted/30">
         <div className="container max-w-6xl">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 animate-fade-in">
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
               Compare <span className="text-primary">packages</span>
             </h2>
@@ -281,31 +476,151 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="overflow-x-auto">
+          {/* Package Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <Card className="relative overflow-hidden hover-scale hover:shadow-2xl transition-all duration-300 group">
+              <div className="p-8">
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold mb-2">Base Package</h3>
+                  <p className="text-muted-foreground">Essential features for schools starting their digital transformation journey</p>
+                </div>
+                <div className="mb-6">
+                  <Badge variant="secondary" className="text-lg px-4 py-2">Starter Plan</Badge>
+                </div>
+                <div className="space-y-3 mb-8">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">School & classroom management</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">Digital journal & timetable</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">Point-based & verbal assessments</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">Homework tracking</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">Messaging application</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">Mobile app access</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">Telebirr/M-Pesa fee payment</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">Basic EMIS integration</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">48-hour customer support</span>
+                  </div>
+                </div>
+                <Link to="/login">
+                  <Button className="w-full group-hover:scale-105 transition-transform" size="lg">
+                    Get Started
+                  </Button>
+                </Link>
+              </div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16"></div>
+            </Card>
+
+            <Card className="relative overflow-hidden border-2 border-primary hover-scale hover:shadow-2xl transition-all duration-300 group">
+              <div className="absolute top-4 right-4">
+                <Badge className="bg-primary text-primary-foreground">Most Popular</Badge>
+              </div>
+              <div className="p-8">
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold mb-2">National Package</h3>
+                  <p className="text-muted-foreground">Complete solution with advanced anti-fraud and intervention tools</p>
+                </div>
+                <div className="mb-6">
+                  <Badge variant="default" className="text-lg px-4 py-2">Premium Plan</Badge>
+                </div>
+                <div className="space-y-3 mb-8">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span className="text-sm font-semibold">All Base Package features</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">Blockchain credential verification</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">Alarm Bell early intervention system</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">Development interviews & cards</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">Learning outcomes portfolio</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">Student curriculum choices</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">School event registration</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">Full system integrations (Untis, RIKS, ELIIS)</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">Priority 24-hour support</span>
+                  </div>
+                </div>
+                <Link to="/login">
+                  <Button className="w-full group-hover:scale-105 transition-transform" size="lg" variant="default">
+                    Get Started
+                  </Button>
+                </Link>
+              </div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full -mr-16 -mt-16"></div>
+            </Card>
+          </div>
+
+          {/* Detailed Comparison Table */}
+
+          <div className="overflow-x-auto bg-background rounded-lg shadow-lg">
             <table className="w-full border-collapse">
               <thead>
-                <tr className="border-b">
-                  <th className="text-left p-4 font-semibold">Features</th>
-                  <th className="text-center p-4 font-semibold bg-muted/30">Base package</th>
-                  <th className="text-center p-4 font-semibold bg-primary/5">Standard package</th>
+                <tr className="border-b-2 border-border">
+                  <th className="text-left p-4 font-semibold">Feature Details</th>
+                  <th className="text-center p-4 font-semibold bg-muted/30">Base Package</th>
+                  <th className="text-center p-4 font-semibold bg-primary/10">National Package</th>
                 </tr>
               </thead>
               <tbody>
                 {comparisonFeatures.map((feature, index) => (
-                  <tr key={index} className="border-b hover:bg-muted/20 transition-colors">
-                    <td className="p-4 text-sm">{feature.name}</td>
+                  <tr key={index} className="border-b hover:bg-muted/30 transition-colors duration-200">
+                    <td className="p-4 text-sm font-medium">{feature.name}</td>
                     <td className="p-4 text-center bg-muted/10">
                       {feature.base ? (
-                        <CheckCircle2 className="h-5 w-5 text-success mx-auto" />
+                        <CheckCircle2 className="h-5 w-5 text-success mx-auto animate-scale-in" />
                       ) : (
-                        <X className="h-5 w-5 text-muted-foreground mx-auto" />
+                        <X className="h-5 w-5 text-muted-foreground/50 mx-auto" />
                       )}
                     </td>
                     <td className="p-4 text-center bg-primary/5">
                       {feature.standard ? (
-                        <CheckCircle2 className="h-5 w-5 text-success mx-auto" />
+                        <CheckCircle2 className="h-5 w-5 text-success mx-auto animate-scale-in" />
                       ) : (
-                        <X className="h-5 w-5 text-muted-foreground mx-auto" />
+                        <X className="h-5 w-5 text-muted-foreground/50 mx-auto" />
                       )}
                     </td>
                   </tr>

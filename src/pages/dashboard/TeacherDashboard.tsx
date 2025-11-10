@@ -2,6 +2,9 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
+import { PackageFeatures, PackageType, isFeatureAvailable } from "@/components/PackageFeatures";
+import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 import { 
   BookOpen, 
   Users, 
@@ -10,10 +13,40 @@ import {
   CheckCircle2,
   Calendar,
   FileText,
-  TrendingUp
+  TrendingUp,
+  Download
 } from "lucide-react";
 
 const TeacherDashboard = () => {
+  const { toast } = useToast();
+  const [currentPackage] = useState<PackageType>("national");
+  
+  const handleOpenJournal = (className: string) => {
+    toast({
+      title: "Opening Journal",
+      description: `Loading digital journal for ${className}...`,
+    });
+  };
+
+  const handleSaveGrades = () => {
+    toast({
+      title: "Grades Saved",
+      description: "Grades submitted successfully and synced to EMIS.",
+    });
+  };
+
+  const handleGenerateReport = () => {
+    toast({
+      title: "Generating Report",
+      description: "EMIS report is being prepared for download.",
+    });
+    setTimeout(() => {
+      toast({
+        title: "Report Ready",
+        description: "EMIS report downloaded successfully!",
+      });
+    }, 2000);
+  };
   return (
     <div className="min-h-screen bg-muted/30">
       {/* Header */}
@@ -31,8 +64,8 @@ const TeacherDashboard = () => {
               <p className="opacity-90">Senior Mathematics Teacher • Addis Ababa University Preparatory School</p>
               <p className="text-sm opacity-80 mt-1">Personnel ID: TCH-2024-789 • Fayda ID: FID-5544332211</p>
             </div>
-            <Button variant="secondary" size="lg">
-              <FileText className="mr-2 h-5 w-5" />
+            <Button variant="secondary" size="lg" onClick={handleGenerateReport}>
+              <Download className="mr-2 h-5 w-5" />
               Generate EMIS Report
             </Button>
           </div>
@@ -63,7 +96,7 @@ const TeacherDashboard = () => {
                       <h3 className="text-lg font-semibold">Grade 12A - Advanced Mathematics</h3>
                       <p className="text-sm text-muted-foreground">32 Students • Monday, Wednesday, Friday 9:00-10:30 AM</p>
                     </div>
-                    <Button size="sm">Open Journal</Button>
+                    <Button size="sm" onClick={() => handleOpenJournal("Grade 12A")}>Open Journal</Button>
                   </div>
 
                   <div className="grid grid-cols-3 gap-4">
@@ -89,7 +122,7 @@ const TeacherDashboard = () => {
                       <h3 className="text-lg font-semibold">Grade 11B - Calculus I</h3>
                       <p className="text-sm text-muted-foreground">28 Students • Tuesday, Thursday 11:00 AM-12:30 PM</p>
                     </div>
-                    <Button size="sm" variant="outline">Open Journal</Button>
+                    <Button size="sm" variant="outline" onClick={() => handleOpenJournal("Grade 11B")}>Open Journal</Button>
                   </div>
 
                   <div className="grid grid-cols-3 gap-4">
@@ -155,7 +188,7 @@ const TeacherDashboard = () => {
                   </div>
                 </div>
 
-                <Button className="w-full">Save Grades (Auto-sync to EMIS)</Button>
+                <Button className="w-full" onClick={handleSaveGrades}>Save Grades (Auto-sync to EMIS)</Button>
               </div>
             </Card>
 
@@ -201,7 +234,13 @@ const TeacherDashboard = () => {
                 <div className="p-4 rounded-lg bg-background border-2 border-warning">
                   <p className="font-semibold text-sm mb-1">Dawit Bekele (12A)</p>
                   <p className="text-xs text-muted-foreground mb-2">3 consecutive absences • Declining grades</p>
-                  <Button size="sm" variant="outline" className="w-full">
+                  <Button 
+                    size="sm" 
+                    variant="outline" 
+                    className="w-full"
+                    onClick={() => toast({ title: "Intervention Plan", description: "Opening intervention planning tools..." })}
+                    disabled={!isFeatureAvailable("Alarm Bell early intervention system", currentPackage)}
+                  >
                     Create Intervention Plan
                   </Button>
                 </div>
@@ -273,19 +312,36 @@ const TeacherDashboard = () => {
             <Card className="p-6">
               <h3 className="font-semibold mb-4">Quick Actions</h3>
               <div className="space-y-2">
-                <Button variant="outline" className="w-full justify-start">
+                <Button 
+                  variant="outline" 
+                  className="w-full justify-start hover-scale transition-all"
+                  onClick={() => toast({ title: "Attendance", description: "Opening attendance tracker..." })}
+                >
                   <ClipboardCheck className="mr-2 h-4 w-4" />
                   Mark Attendance
                 </Button>
-                <Button variant="outline" className="w-full justify-start">
+                <Button 
+                  variant="outline" 
+                  className="w-full justify-start hover-scale transition-all"
+                  onClick={() => toast({ title: "Post Assignment", description: "Opening assignment creator..." })}
+                >
                   <FileText className="mr-2 h-4 w-4" />
                   Post Assignment
                 </Button>
-                <Button variant="outline" className="w-full justify-start">
+                <Button 
+                  variant="outline" 
+                  className="w-full justify-start hover-scale transition-all"
+                  onClick={() => toast({ title: "Messaging", description: "Opening parent messaging system..." })}
+                >
                   <Users className="mr-2 h-4 w-4" />
                   Message Parents
                 </Button>
               </div>
+            </Card>
+
+            {/* Package Features */}
+            <Card className="p-6">
+              <PackageFeatures currentPackage={currentPackage} />
             </Card>
           </div>
         </div>
